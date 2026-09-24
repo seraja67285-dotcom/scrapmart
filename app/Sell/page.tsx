@@ -1,1 +1,4 @@
-
+import { prisma } from "@/lib/prisma";
+import { whatsappLink } from "@/lib/whatsapp";
+export const dynamic="force-dynamic";
+export default async function Sell(){const s=await prisma.siteSettings.findUnique({where:{id:"main"}});const wa=s?.whatsappNumber||process.env.NEXT_PUBLIC_WHATSAPP_NUMBER||"";const link=whatsappLink(wa,"Hello ScrapMart, I want to sell my scrap.%0AName:%0AScrap type:%0AApprox quantity:%0ADescription:");return <main className="container"><div className="form"><h1 style={{fontSize:30}}>Sell Your Scrap</h1><p className="muted">Fill details in WhatsApp and discuss the deal directly with us.</p><a className="btn green" href={link} target="_blank">Send Details on WhatsApp</a></div></main>}
