@@ -1,0 +1,3 @@
+import "./globals.css";
+export const metadata={title:"ScrapMart",description:"Scrap catalog and WhatsApp enquiries"};
+export default function RootLayout({children}:{children:React.ReactNode}){return <><header className="nav"><div className="container navin"><a className="brand" href="/">♻️ ScrapMart</a><a href="/sell" className="btn green">Sell Your Scrap</a></div></header>{children}<footer className="footer"><div className="container">© ScrapMart — Buy & sell scrap through WhatsApp.</div></footer></>}
