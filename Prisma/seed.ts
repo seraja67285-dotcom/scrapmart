@@ -1,0 +1,3 @@
+import { PrismaClient } from "@prisma/client";
+const p=new PrismaClient();
+async function main(){const names=["Iron Scrap","Copper Scrap","Aluminium Scrap","Steel Scrap","Brass Scrap","E-Waste"];for(const name of names){const slug=name.toLowerCase().replace(/[^a-z0-9]+/g,"-");await p.category.upsert({where:{slug},update:{},create:{name,slug}})}await p.siteSettings.upsert({where:{id:"main"},update:{},create:{id:"main",whatsappNumber:process.env.NEXT_PUBLIC_WHATSAPP_NUMBER||"919999999999",siteName:"ScrapMart"}})}main().finally(()=>p.$disconnect())
